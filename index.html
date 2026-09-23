@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coastal Spirit Football Club — Concept Redesign</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Concept redesign of the Coastal Spirit Football Club website, Christchurch.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0A2A5E;
+  --ink:#0E1B33;
+  --muted:#4B5A73;
+  --blue:#47C4F5;
+  --blue-deep:#0F73C2;
+  --sky:#E8F6FD;
+  --sand:#FAF8F4;
+  --white:#fff;
+  --line:#E2E8F0;
+  --radius:20px;
+  --shadow:0 1px 2px rgba(14,27,51,.06),0 8px 24px rgba(14,27,51,.08);
+  --font:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;font-family:var(--font);color:var(--ink);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue-deep);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1180px,100% - 48px);margin-inline:auto}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-deep);margin:0 0 14px}
+h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em;margin:0}
+h2{font-size:clamp(1.9rem,3.6vw,2.7rem);color:var(--navy)}
+h3{font-size:1.2rem;color:var(--navy);letter-spacing:-.01em}
+p{margin:0}
+.lead{font-size:1.125rem;color:var(--muted);max-width:60ch}
+section{padding:96px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.section-head .lead{margin-top:14px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;font-weight:700;font-size:1rem;text-decoration:none;border:2px solid transparent;transition:transform .15s,background .15s,box-shadow .15s;cursor:pointer;font-family:inherit}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--navy);color:#fff}
+.btn-primary:hover{background:#0d3676;box-shadow:0 8px 20px rgba(10,42,94,.25)}
+.btn-blue{background:var(--blue);color:var(--navy)}
+.btn-blue:hover{background:#63cff8;box-shadow:0 8px 20px rgba(71,196,245,.4)}
+.btn-ghost{background:transparent;color:var(--navy);border-color:var(--navy)}
+.btn-ghost:hover{background:var(--navy);color:#fff}
+.link-arrow{font-weight:700;color:var(--navy);text-decoration:none;border-bottom:2px solid var(--blue);padding-bottom:2px}
+.link-arrow:hover{border-color:var(--navy)}
+
+.ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.badge i .ic{color:var(--blue-deep);width:22px;height:22px}
+.pin .ic{width:22px;height:22px}
+.note .ic{flex:none;color:var(--blue-deep);margin-top:2px}
+
+/* Concept ribbon */
+.ribbon{background:var(--navy);color:#cfe6f7;font-size:.82rem;text-align:center;padding:8px 16px}
+.ribbon strong{color:#fff}
+.ribbon a{color:var(--blue)}
+
+/* Header */
+header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:48px;height:auto}
+.brand span{font-weight:800;color:var(--navy);line-height:1.1;font-size:1.02rem;letter-spacing:-.01em}
+.brand small{display:block;font-weight:600;color:var(--muted);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+nav ul{display:flex;gap:6px;list-style:none;margin:0;padding:0}
+nav a.nl{display:block;padding:10px 14px;border-radius:999px;text-decoration:none;font-weight:600;font-size:.95rem;color:var(--ink)}
+nav a.nl:hover{background:var(--sky);color:var(--navy)}
+.nav-cta{display:flex;align-items:center;gap:12px}
+.nav-cta .btn{padding:11px 22px;font-size:.95rem}
+.menu-btn{display:none;background:none;border:2px solid var(--line);border-radius:12px;width:46px;height:46px;cursor:pointer;align-items:center;justify-content:center}
+.menu-btn span,.menu-btn span::before,.menu-btn span::after{display:block;width:20px;height:2px;background:var(--navy);border-radius:2px;position:relative;content:""}
+.menu-btn span::before{position:absolute;top:-6px}
+.menu-btn span::after{position:absolute;top:6px}
+
+/* Hero */
+.hero{padding:56px 0 88px;background:linear-gradient(180deg,var(--sky) 0%,#fff 100%);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.02fr 1fr;gap:56px;align-items:center}
+.hero-grid>*,.story-grid>*,.contact-grid>*{min-width:0}
+.hero h1{font-size:clamp(2.6rem,6vw,4.6rem);color:var(--navy);margin-bottom:22px}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 62%,var(--blue) 62%,var(--blue) 92%,transparent 92%)}
+.hero .lead{margin-bottom:32px;font-size:1.2rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+.hero-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:20px 20px;margin-top:40px;color:var(--muted);font-size:.9rem;font-weight:500;max-width:520px;line-height:1.35}
+.hero-meta b{display:block;color:var(--navy);font-size:1.7rem;margin-bottom:4px;font-weight:800;letter-spacing:-.02em}
+.hero-media{position:relative}
+.hero-photo{border-radius:28px;overflow:hidden;box-shadow:0 24px 60px rgba(10,42,94,.22);aspect-ratio:5/4;background:#cfe6f7}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.badge{position:absolute;background:#fff;border-radius:18px;padding:14px 18px;box-shadow:var(--shadow);display:flex;gap:12px;align-items:center;max-width:270px}
+.badge i{flex:none;width:40px;height:40px;border-radius:12px;background:var(--sky);display:grid;place-items:center;font-style:normal;font-size:1.25rem}
+.badge b{display:block;color:var(--navy);font-size:.95rem;line-height:1.2}
+.badge span{font-size:.8rem;color:var(--muted);line-height:1.3;display:block;margin-top:2px}
+.badge.b1{left:-28px;bottom:36px}
+.badge.b2{right:-14px;top:28px}
+
+/* Find your place */
+.pathways{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;transition:transform .2s,box-shadow .2s,border-color .2s;display:flex;flex-direction:column;text-decoration:none}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--blue)}
+.card .age{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-deep);margin-bottom:10px}
+.card h3{margin-bottom:8px}
+.card p{color:var(--muted);font-size:.95rem;flex:1}
+.card .price{margin-top:18px;padding-top:16px;border-top:1px dashed var(--line);display:flex;justify-content:space-between;align-items:center;font-weight:700;color:var(--navy)}
+.card .price span{font-size:.85rem;font-weight:600;color:var(--muted)}
+.card .go{width:34px;height:34px;border-radius:50%;background:var(--sky);display:grid;place-items:center;transition:.2s}
+.card:hover .go{background:var(--blue)}
+.note{margin-top:24px;font-size:.92rem;color:var(--muted);display:flex;gap:10px;align-items:flex-start;background:var(--sand);padding:16px 20px;border-radius:14px}
+
+/* Stats */
+.stats{background:var(--navy);color:#fff;padding:64px 0}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.stat b{display:block;font-size:clamp(2.4rem,4.5vw,3.5rem);font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--blue)}
+.stat span{display:block;margin-top:10px;color:#cfe0f5;font-size:.98rem;max-width:26ch}
+
+/* News */
+.news-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:auto auto;gap:22px}
+.post{display:flex;flex-direction:column;background:#fff;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);text-decoration:none;transition:transform .2s,box-shadow .2s}
+.post:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.post .img{aspect-ratio:16/10;background:#cfe6f7;overflow:hidden}
+.post .img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.post:hover .img img{transform:scale(1.04)}
+.post .body{padding:22px 24px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
+.post time{font-size:.8rem;font-weight:700;color:var(--blue-deep);letter-spacing:.06em;text-transform:uppercase}
+.post p{color:var(--muted);font-size:.95rem}
+.post.feature{grid-row:span 2}
+.post:nth-child(4){grid-column:2 / 4}
+.post.feature .img{aspect-ratio:4/3}
+.post.feature h3{font-size:1.6rem}
+.tag{align-self:flex-start;background:var(--sky);color:var(--navy);font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:999px;letter-spacing:.04em}
+
+/* Premier */
+.premier{background:var(--sand)}
+.premier-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.panel{border-radius:28px;overflow:hidden;position:relative;min-height:440px;display:flex;flex-direction:column;justify-content:flex-end;padding:36px;color:#fff;isolation:isolate}
+.panel::before{content:"";position:absolute;inset:0;z-index:-1}
+.panel.men{background:#0A2A5E}
+.panel.men img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.panel.men::before{background:linear-gradient(180deg,rgba(10,42,94,.05) 15%,rgba(10,42,94,.92) 88%)}
+.panel.women{background:radial-gradient(120% 90% at 100% 0%,#47C4F5 0%,#1478C8 45%,#0A2A5E 100%)}
+.panel h3{color:#fff;font-size:1.9rem;margin-bottom:10px}
+.panel p{color:#e2eefb;max-width:46ch}
+.panel .kicker{font-size:.76rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+.panel.women .kicker{color:#fff;opacity:.9}
+.panel ul{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.panel li{background:rgba(255,255,255,.16);backdrop-filter:blur(6px);padding:6px 14px;border-radius:999px;font-size:.85rem;font-weight:600}
+.big-num{position:absolute;top:22px;right:30px;font-size:clamp(5rem,12vw,9rem);font-weight:800;color:rgba(255,255,255,.18);line-height:1;letter-spacing:-.05em}
+
+/* Story */
+.story-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:start}
+.timeline{list-style:none;margin:0;padding:0 0 0 30px;position:relative}
+.timeline::before{content:"";position:absolute;left:8px;top:8px;bottom:8px;width:3px;background:linear-gradient(var(--blue),var(--navy));border-radius:3px}
+.timeline li{position:relative;padding:0 0 30px 22px}
+.timeline li::before{content:"";position:absolute;left:-30px;top:6px;width:19px;height:19px;border-radius:50%;background:#fff;border:4px solid var(--blue-deep)}
+.timeline b{display:block;font-size:1.35rem;color:var(--navy);font-weight:800;letter-spacing:-.02em}
+.timeline span{color:var(--muted);font-size:.98rem}
+
+/* Venues */
+.venues{background:var(--sky)}
+.venue-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.venue{background:#fff;border-radius:var(--radius);padding:32px;box-shadow:var(--shadow)}
+.venue .pin{width:44px;height:44px;border-radius:14px;background:var(--navy);color:#fff;display:grid;place-items:center;margin-bottom:18px;font-size:1.2rem}
+.venue address{font-style:normal;color:var(--muted);margin:6px 0 16px;font-weight:500}
+.venue ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.venue li{display:flex;gap:10px;color:var(--ink);font-size:.98rem}
+.venue li::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--blue);margin-top:.62em}
+.saturday{margin-top:24px;background:var(--navy);color:#fff;border-radius:var(--radius);padding:28px 32px;display:flex;gap:24px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+.saturday h3{color:#fff;margin-bottom:6px}
+.saturday p{color:#cfe0f5;max-width:64ch}
+
+/* Fund + shop */
+.two-up{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.feature-card{border-radius:28px;padding:44px;position:relative;overflow:hidden;min-height:340px;display:flex;flex-direction:column;justify-content:center;gap:16px}
+.feature-card.fund{background:var(--blue);color:var(--navy)}
+.feature-card.fund .eyebrow{color:var(--navy)}
+.feature-card.fund h2{color:var(--navy)}
+.feature-card.fund p{max-width:44ch;font-weight:500}
+.feature-card.shop{background:var(--sand);border:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:24px;padding:36px}
+.feature-card.shop img{border-radius:18px;aspect-ratio:1/1;object-fit:cover;width:100%;background:#cfe6f7}
+.feature-card.shop .btn{align-self:flex-start;margin-top:6px}
+.feature-card .btn{align-self:flex-start;margin-top:8px}
+
+/* Sponsors */
+.tier{display:grid;grid-template-columns:150px 1fr;gap:24px;padding:26px 0;border-top:1px solid var(--line);align-items:center}
+.tier:last-of-type{border-bottom:1px solid var(--line)}
+.tier h3{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{display:inline-block;padding:10px 18px;border-radius:999px;background:var(--sand);border:1px solid var(--line);text-decoration:none;font-weight:600;font-size:.95rem;transition:.15s}
+.chip:hover{background:var(--sky);border-color:var(--blue)}
+.tier.platinum .chip{font-size:1.4rem;padding:16px 30px;background:var(--navy);color:#fff;border-color:var(--navy);font-weight:800}
+.tier.gold .chip{font-size:1.05rem;padding:12px 22px;border-color:#e7c766;background:#fff8e2}
+
+/* Contact */
+.contact{background:var(--navy);color:#fff}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.contact h2{color:#fff;margin-bottom:16px}
+.contact .eyebrow{color:var(--blue)}
+.contact .lead{color:#cfe0f5}
+.details{list-style:none;margin:32px 0 0;padding:0;display:grid;gap:18px}
+.details li{display:flex;gap:16px;align-items:flex-start}
+.details i{flex:none;width:44px;height:44px;border-radius:14px;background:rgba(255,255,255,.1);display:grid;place-items:center;font-style:normal}
+.details b{display:block;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:2px}
+.details a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3)}
+.details a:hover{border-color:var(--blue)}
+form{background:#fff;color:var(--ink);border-radius:var(--radius);padding:32px;display:grid;gap:16px}
+form h3{margin-bottom:2px}
+label{font-weight:600;font-size:.9rem;display:grid;gap:6px;color:var(--navy)}
+input,textarea{font:inherit;padding:13px 16px;border:1.5px solid var(--line);border-radius:12px;background:var(--sand);color:var(--ink);width:100%}
+input:focus,textarea:focus{outline:none;border-color:var(--blue-deep);background:#fff;box-shadow:0 0 0 4px rgba(71,196,245,.25)}
+textarea{min-height:120px;resize:vertical}
+form .btn{justify-self:start}
+.form-note{font-size:.82rem;color:var(--muted)}
+
+/* Footer */
+footer{background:#071c40;color:#b5c6de;padding:56px 0 28px;font-size:.93rem}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px}
+.foot img{width:60px;margin-bottom:14px}
+.foot h4{color:#fff;margin:0 0 14px;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.foot a{text-decoration:none}
+.foot a:hover{color:#fff;text-decoration:underline}
+.legal{margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.85rem}
+.legal a{color:var(--blue)}
+
+/* Responsive */
+@media (max-width:1020px){
+  .hero-grid,.story-grid,.contact-grid{grid-template-columns:1fr;gap:44px}
+  .pathways{grid-template-columns:repeat(2,1fr)}
+  .stat-grid{grid-template-columns:repeat(2,1fr)}
+  .news-grid{grid-template-columns:1fr 1fr}
+  .post.feature{grid-column:1/-1;grid-row:auto}
+  .post:nth-child(4){grid-column:1/-1}
+  .foot{grid-template-columns:1fr 1fr}
+  .badge.b1{left:12px}.badge.b2{right:12px}
+}
+@media (max-width:860px){
+  nav ul{position:fixed;inset:76px 0 auto 0;background:#fff;flex-direction:column;padding:16px 24px 28px;border-bottom:1px solid var(--line);box-shadow:0 20px 40px rgba(14,27,51,.12);transform:translateY(-120%);visibility:hidden;transition:transform .25s,visibility .25s;gap:2px}
+  nav ul.open{transform:none;visibility:visible}
+  nav a.nl{font-size:1.05rem;padding:14px 12px}
+  .menu-btn{display:flex}
+  .nav-cta .btn{display:none}
+  .premier-grid,.venue-grid,.two-up{grid-template-columns:1fr}
+  .tier{grid-template-columns:1fr;gap:12px}
+}
+@media (max-width:620px){
+  section{padding:68px 0}
+  .wrap{width:min(1180px,100% - 32px)}
+  .pathways,.news-grid{grid-template-columns:1fr}
+  .stat-grid{gap:28px 16px}
+  .hero{padding:32px 0 64px}
+  .badge{position:static;margin-top:14px;max-width:none}
+  .hero-media{display:grid}
+  .feature-card{padding:30px}
+  .feature-card.shop{grid-template-columns:1fr}
+  .panel{padding:26px;min-height:380px}
+  .big-num{display:none}
+  .hero-actions .btn{flex:1 1 auto;justify-content:center}
+  .foot{grid-template-columns:1fr}
+  .brand span small{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+<symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></symbol>
+<symbol id="i-ball" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="12 8 15.5 10.5 14.2 14.5 9.8 14.5 8.5 10.5"/><path d="M12 8V2M15.5 10.5l5.5-2M14.2 14.5l3.3 5M9.8 14.5l-3.3 5M8.5 10.5l-5.5-2"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></symbol>
+</defs></svg>
+<div class="ribbon"><strong>Concept redesign</strong> by chrétienstudios — not the club's live website. Content and photos belong to Coastal Spirit FC.</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Coastal Spirit Football Club home">
+      <img src="https://images.squarespace-cdn.com/content/v1/5f4816784f1f3808548e6bf4/1598940111657-X4POK1NMAWZWE9IK8X1W/coastal-logo-big-1.png?format=500w" alt="" width="48" height="44">
+      <span>Coastal Spirit<small>Football Club</small></span>
+    </a>
+    <nav aria-label="Main">
+      <ul id="menu">
+        <li><a class="nl" href="#play">Play</a></li>
+        <li><a class="nl" href="#news">News</a></li>
+        <li><a class="nl" href="#premier">Premier teams</a></li>
+        <li><a class="nl" href="#story">Our story</a></li>
+        <li><a class="nl" href="#venues">Venues</a></li>
+        <li><a class="nl" href="#sponsors">Sponsors</a></li>
+        <li><a class="nl" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="https://www.coastalspirit.co.nz/registrations" target="_blank" rel="noopener">Register</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Bromley · Christchurch · Since 2007</p>
+      <h1>This is <em>your</em> community.</h1>
+      <p class="lead">Coastal Spirit is a football club committed to development and growth, with people playing in a safe and enjoyable environment. From first kicks at three to National League football.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://www.coastalspirit.co.nz/registrations" target="_blank" rel="noopener">Register to play →</a>
+        <a class="btn btn-ghost" href="#play">Find your team</a>
+      </div>
+      <div class="hero-meta">
+        <div><b>2025</b>Southern League champions</div>
+        <div><b>2027</b>Dettol National League</div>
+        <div><b>12</b>Women's Premier League titles</div>
+      </div>
+    </div>
+    <div class="hero-media">
+      <div class="hero-photo">
+        <img src="https://images.squarespace-cdn.com/content/v1/6000c15361fe927f9bb13d4e/5fd6b692-3b01-4298-b7fb-5349957d2bb9/whole+club+champions.jpg?format=1500w" alt="The whole Coastal Spirit club gathered on the pitch with the Southern League champions banner" width="1500" height="1200" fetchpriority="high">
+      </div>
+      <div class="badge b2"><i><svg class="ic"><use href="#i-award"/></svg></i><div><b>Southern League champions</b><span>Men's Premier, 2025</span></div></div>
+      <div class="badge b1"><i><svg class="ic"><use href="#i-ball"/></svg></i><div><b>National League 2027</b><span>Top-tier football on Christchurch's east side</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FIND YOUR PLACE -->
+<section id="play" style="padding-top:40px">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Play with us</p>
+        <h2>There's a place for every player.</h2>
+        <p class="lead">Whether you're three or over thirty-five, playing for fun or chasing silverware, pick where you fit and register in a couple of taps.</p>
+      </div>
+      <a class="link-arrow" href="https://www.coastalspirit.co.nz/registrations" target="_blank" rel="noopener">All 2026 fees &amp; discounts →</a>
+    </div>
+
+    <div class="pathways">
+      <a class="card" href="https://www.coastalspirit.co.nz/first-kicks" target="_blank" rel="noopener">
+        <div class="age">Ages 3–7</div>
+        <h3>First Kicks &amp; Fun Football</h3>
+        <p>An hour of games against players your own age on Saturday mornings at Cuthberts Green. The club provides the playing shirt.</p>
+        <div class="price"><div>$80 <span>per season</span></div><div class="go">→</div></div>
+      </a>
+      <a class="card" href="https://www.coastalspirit.co.nz/first-kicks" target="_blank" rel="noopener">
+        <div class="age">Ages 8–9</div>
+        <h3>Eastern Football Hub</h3>
+        <p>Saturday games plus Tuesday training at Linfield Park, run by the club's Director of Football.</p>
+        <div class="price"><div>$120 <span>per season</span></div><div class="go">→</div></div>
+      </a>
+      <a class="card" href="https://www.coastalspirit.co.nz/junior-teams" target="_blank" rel="noopener">
+        <div class="age">Ages 10–13</div>
+        <h3>Junior Football</h3>
+        <p>Football for ages 10 to 13. The club supplies playing shirts and socks; players bring their own shorts and shin-pads.</p>
+        <div class="price"><div>$180 <span>per season</span></div><div class="go">→</div></div>
+      </a>
+      <a class="card" href="https://www.coastalspirit.co.nz/youth-teams" target="_blank" rel="noopener">
+        <div class="age">Ages 14–18</div>
+        <h3>Youth Football</h3>
+        <p>Grades 14 to 18, competing in Mainland Football's Canterbury-wide competitions.</p>
+        <div class="price"><div>From $190 <span>per season</span></div><div class="go">→</div></div>
+      </a>
+      <a class="card" href="https://www.coastalspirit.co.nz/womens-football" target="_blank" rel="noopener">
+        <div class="age">Women's</div>
+        <h3>Women's Football</h3>
+        <p>A proud record of regional and national success, with players going on to US university scholarships and professional football.</p>
+        <div class="price"><div>Register <span>via the club</span></div><div class="go">→</div></div>
+      </a>
+      <a class="card" href="https://www.coastalspirit.co.nz/senior-men" target="_blank" rel="noopener">
+        <div class="age">Men's</div>
+        <h3>Men's Football</h3>
+        <p>Premier, Reserves, divisional sides and two Over-35s Masters teams. Unattached? The club will help you find the right one.</p>
+        <div class="price"><div>From $220 <span>16–21 yrs</span></div><div class="go">→</div></div>
+      </a>
+      <a class="card" href="https://www.coastalspirit.co.nz/school-football" target="_blank" rel="noopener">
+        <div class="age">Schools</div>
+        <h3>School Football</h3>
+        <p>Lunchtime football sessions at local primary schools, building teamwork, resilience and community spirit.</p>
+        <div class="price"><div>Learn more</div><div class="go">→</div></div>
+      </a>
+      <a class="card" href="https://www.coastalspirit.co.nz/goal-keeper-academy" target="_blank" rel="noopener">
+        <div class="age">Development</div>
+        <h3>Goalkeeper Academy</h3>
+        <p>Specialist goalkeeper coaching at Linfield Park for junior, youth and senior grades, led by Ellis Hare-Reid and Seth Mitchell-Webster.</p>
+        <div class="price"><div>Learn more</div><div class="go">→</div></div>
+      </a>
+    </div>
+
+    <div class="note"><span aria-hidden="true"><svg class="ic"><use href="#i-heart"/></svg></span><span><b>Cost shouldn't stop anyone playing.</b> Payment plans are available on request, and a 20% family discount applies when two or more members register.</span></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="wrap stat-grid">
+    <div class="stat"><b>1910</b><span>Rangers, one of NZ's oldest clubs, is where our roots begin</span></div>
+    <div class="stat"><b>2007</b><span>Rangers and New Brighton merge to form Coastal Spirit</span></div>
+    <div class="stat"><b>12</b><span>Women's Premier League titles since 2008</span></div>
+    <div class="stat"><b>15–1–2</b><span>Men's Reserves' title-winning record in 2026</span></div>
+  </div>
+</div>
+
+<!-- NEWS -->
+<section id="news">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Latest news</p>
+        <h2>What's happening at the club.</h2>
+      </div>
+      <a class="link-arrow" href="https://www.coastalspirit.co.nz/news" target="_blank" rel="noopener">All news →</a>
+    </div>
+    <div class="news-grid">
+      <a class="post feature" href="https://www.coastalspirit.co.nz/news/dettol-national-league-2027-secured" target="_blank" rel="noopener">
+        <div class="img"><img loading="lazy" src="https://images.squarespace-cdn.com/content/v1/6000c15361fe927f9bb13d4e/1788466125372-Y26U1DJ2Q9BKWMTGBVHP/NL2027+secured.jpeg?format=1000w" alt="Coastal Spirit players celebrating National League qualification"></div>
+        <div class="body">
+          <span class="tag">Men's Premier</span>
+          <time datetime="2026-09-04">4 September 2026</time>
+          <h3>Dettol National League 2027 secured</h3>
+          <p>A pivotal 2–1 win over Christchurch United on Club Day sealed a place in the new 12-team national league, bringing elite football to Christchurch's east side.</p>
+        </div>
+      </a>
+      <a class="post" href="https://www.coastalspirit.co.nz/news/new-world-championship-winners-2026" target="_blank" rel="noopener">
+        <div class="img"><img loading="lazy" src="https://images.squarespace-cdn.com/content/v1/6000c15361fe927f9bb13d4e/792cae04-e842-46a9-8149-f0d0dca9631c/NW+Winners+2026.jpg?format=750w" alt="Men's Reserves celebrating their New World Championship title"></div>
+        <div class="body">
+          <span class="tag">Men's Reserves</span>
+          <time datetime="2026-09-04">4 September 2026</time>
+          <h3>New World Championship winners</h3>
+          <p>15 wins, one draw and two defeats, from bottom of the table in 2024 to champions.</p>
+        </div>
+      </a>
+      <a class="post" href="https://www.coastalspirit.co.nz/news/english-cup-amp-reta-fitzpatrick-cup-finals" target="_blank" rel="noopener">
+        <div class="img"><img loading="lazy" src="https://images.squarespace-cdn.com/content/v1/6000c15361fe927f9bb13d4e/1788466668003-59K0HQBBC5MBWXO6FF15/EP+GF.png?format=750w" alt="English Cup and Reta Fitzpatrick Cup finals graphic"></div>
+        <div class="body">
+          <span class="tag">Cup finals</span>
+          <time datetime="2026-09-04">4 September 2026</time>
+          <h3>English Cup &amp; Reta Fitzpatrick Cup finals</h3>
+          <p>Both Premier teams head to English Park to chase silverware.</p>
+        </div>
+      </a>
+      <a class="post" href="https://www.coastalspirit.co.nz/news/csfc-club-day-2026-photos" target="_blank" rel="noopener">
+        <div class="body" style="flex-direction:row;align-items:center;gap:22px">
+          <div style="flex:none;width:110px;height:84px;border-radius:14px;overflow:hidden;background:#cfe6f7"><img loading="lazy" src="https://images.squarespace-cdn.com/content/v1/6000c15361fe927f9bb13d4e/1788467744899-VRCYC9X2EC2RD0G2C2UC/5fbaa67c-46da-443e-bfa3-f30ad6df8819.JPG?format=500w" alt="" style="width:100%;height:100%;object-fit:cover"></div>
+          <div><span class="tag">Photos</span>
+          <h3 style="margin-top:8px">CSFC Club Day 2026</h3>
+          <time datetime="2026-09-04">4 September 2026</time></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PREMIER -->
+<section id="premier" class="premier">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Premier teams</p>
+        <h2>Football at the top of the game.</h2>
+        <p class="lead">Our men's and women's premier sides, and the record they've built.</p>
+      </div>
+    </div>
+    <div class="premier-grid">
+      <article class="panel men">
+        <img loading="lazy" src="https://images.squarespace-cdn.com/content/v1/6000c15361fe927f9bb13d4e/30c0d2f6-35a6-43b3-bcb1-1225d5a101d9/southern+league+win.jpg?format=1000w" alt="">
+        <div class="kicker">Men's Premier</div>
+        <h3>Southern League champions</h3>
+        <p>Maiden Southern League title in 2025, a first English Cup in 2024, and a place in the new Dettol National League for 2027.</p>
+        <ul><li>Head Coach: Robbie Stanton</li><li>Manager: Paul Hughes</li></ul>
+      </article>
+      <article class="panel women">
+        <div class="big-num" aria-hidden="true">12</div>
+        <div class="kicker">Women's Premier</div>
+        <h3>Twelve league titles and counting</h3>
+        <p>Women's Premier League champions 12 times since 2008, including a perfect 2021 and the inaugural South Island Championship in 2022. Alumni include Football Ferns and Wellington Phoenix players.</p>
+        <ul><li>Head Coach: Courtney Napa</li><li>Manager: Rebecca Huddy</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story">
+  <div class="wrap story-grid">
+    <div>
+      <p class="eyebrow">Our story</p>
+      <h2>Two proud clubs. One community.</h2>
+      <p class="lead" style="margin-top:18px">Coastal Spirit was formed in late 2007 when Rangers, founded in 1910, and New Brighton, founded in 1924, joined forces. Today the club welcomes beginners, social players and elite athletes across men's, women's and junior football.</p>
+      <p style="margin-top:22px"><a class="link-arrow" href="https://www.coastalspirit.co.nz/history" target="_blank" rel="noopener">Read the full history →</a></p>
+    </div>
+    <ol class="timeline">
+      <li><b>1910 &amp; 1924</b><span>Rangers and New Brighton are founded, two of Christchurch's oldest football clubs.</span></li>
+      <li><b>2007</b><span>The clubs merge to become Coastal Spirit, based at Bexley Park.</span></li>
+      <li><b>2011</b><span>The Canterbury earthquakes destroy the Bexley facilities. The club rebuilds at Linfield Park and Cuthberts Green.</span></li>
+      <li><b>2020</b><span>Offices and clubrooms move to Linfield Sports.</span></li>
+      <li><b>2025</b><span>Maiden Southern League title for the Men's Premier team.</span></li>
+      <li><b>2027</b><span>Coastal Spirit joins the new 12-team Dettol National League.</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- VENUES -->
+<section id="venues" class="venues">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Come and visit</p>
+        <h2>Home grounds in the east.</h2>
+      </div>
+    </div>
+    <div class="venue-grid">
+      <article class="venue">
+        <div class="pin" aria-hidden="true"><svg class="ic"><use href="#i-pin"/></svg></div>
+        <h3>Linfield Park</h3>
+        <address>56 Kearneys Road, Linwood, Christchurch</address>
+        <ul>
+          <li>Two full-size pitches plus the premier pitch for Men's and Women's Premier League matches</li>
+          <li>Club offices and clubrooms</li>
+          <li>Gym and squash courts</li>
+        </ul>
+      </article>
+      <article class="venue">
+        <div class="pin" aria-hidden="true"><svg class="ic"><use href="#i-pin"/></svg></div>
+        <h3>Cuthberts Green</h3>
+        <address>220 Pages Road, Wainoni, Christchurch</address>
+        <ul>
+          <li>Six full-size pitches plus smaller pitches for younger teams</li>
+          <li>Two floodlit pitches and changing facilities</li>
+          <li>Home of Saturday morning First Kicks</li>
+        </ul>
+      </article>
+    </div>
+    <div class="saturday">
+      <div>
+        <h3>Saturdays are for everyone.</h3>
+        <p>After the final whistle, players, coaches and supporters are invited back to the club for a drink and the player of the day presentations.</p>
+      </div>
+      <a class="btn btn-blue" href="#contact">Plan a visit</a>
+    </div>
+  </div>
+</section>
+
+<!-- FUND + SHOP -->
+<section>
+  <div class="wrap two-up">
+    <div class="feature-card fund">
+      <p class="eyebrow">Community</p>
+      <h2>Scorching Goal Football Fund</h2>
+      <p>Helping children aged 5 to 18 from financially disadvantaged backgrounds play football, where cost is a barrier to taking part.</p>
+      <a class="btn btn-primary" href="#contact">Ask about support</a>
+    </div>
+    <div class="feature-card shop">
+      <div>
+        <p class="eyebrow">Club shop</p>
+        <h2 style="font-size:1.9rem">Wear the crest.</h2>
+        <p style="margin:12px 0 4px;color:var(--muted)">Official Coastal Spirit apparel and merchandise, online through the Adidas shop.</p>
+        <a class="btn btn-ghost" href="https://csfc.footballhq.co.nz/" target="_blank" rel="noopener">Visit the shop</a>
+      </div>
+      <img loading="lazy" src="https://images.squarespace-cdn.com/content/v1/6000c15361fe927f9bb13d4e/6634f226-b9a3-4fbd-9ad1-bbebbac97cf3/Screenshot+2025-08-20+at+7.38.36%E2%80%AFAM.png?format=750w" alt="Navy Coastal Spirit quarter-zip tops with the club crest">
+    </div>
+  </div>
+</section>
+
+<!-- SPONSORS -->
+<section id="sponsors" style="padding-top:20px">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Our sponsors</p>
+        <h2>Backed by local business.</h2>
+        <p class="lead">Thank you to the businesses that keep Coastal Spirit moving. Please support them.</p>
+      </div>
+      <a class="link-arrow" href="https://www.coastalspirit.co.nz/oursponsors" target="_blank" rel="noopener">Sponsor details →</a>
+    </div>
+
+    <div class="tier platinum"><h3>Platinum</h3>
+      <div class="chips"><a class="chip" href="https://visionsystems.co.nz/" target="_blank" rel="noopener">Vision Systems</a></div></div>
+    <div class="tier gold"><h3>Gold</h3>
+      <div class="chips">
+        <a class="chip" href="https://vvvrealestate.co.nz/" target="_blank" rel="noopener">VVV Real Estate</a>
+        <a class="chip" href="https://vvvgroup.co.nz/" target="_blank" rel="noopener">VVV Group</a>
+        <a class="chip" href="https://www.facebook.com/p/OSheas-Public-House-100063684485107/" target="_blank" rel="noopener">O'Sheas Public House</a>
+        <a class="chip" href="https://www.saunders.co.nz/lawyers-christchurch/" target="_blank" rel="noopener">Saunders &amp; Co</a>
+      </div></div>
+    <div class="tier"><h3>Silver</h3>
+      <div class="chips">
+        <a class="chip" href="https://abbott.co.nz/" target="_blank" rel="noopener">Abbott Insurance Brokers</a>
+        <a class="chip" href="https://loxocladding.co.nz/" target="_blank" rel="noopener">Loxo Cladding</a>
+        <a class="chip" href="https://mccrackensports.co.nz/" target="_blank" rel="noopener">McCracken Sports</a>
+        <a class="chip" href="https://www.chamlang.co.nz/" target="_blank" rel="noopener">Chamlang Plasterers &amp; Painters</a>
+        <a class="chip" href="https://ghroofing.co.nz/" target="_blank" rel="noopener">Graham Hill Roofing</a>
+        <a class="chip" href="https://ksmrecruitment.co.nz/" target="_blank" rel="noopener">KSM Recruitment</a>
+        <a class="chip" href="https://www.placemakers.co.nz/online/" target="_blank" rel="noopener">Placemakers</a>
+      </div></div>
+    <div class="tier"><h3>Bronze</h3>
+      <div class="chips">
+        <a class="chip" href="https://www.smokenbarrel.com" target="_blank" rel="noopener">Smoke n Barrel</a>
+        <a class="chip" href="https://discovertravel.co.nz/" target="_blank" rel="noopener">Discover Travel</a>
+        <a class="chip" href="https://www.foxandferret.co.nz/menu" target="_blank" rel="noopener">Fox &amp; Ferret</a>
+        <a class="chip" href="https://www.bascik.co.nz/" target="_blank" rel="noopener">Bascik Transport</a>
+      </div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <p class="eyebrow">Get in touch</p>
+      <h2>Questions? We'd love to hear from you.</h2>
+      <p class="lead">Ask about registering, joining a team, sponsorship or visiting the club.</p>
+      <ul class="details">
+        <li><i aria-hidden="true"><svg class="ic"><use href="#i-pin"/></svg></i><div><b>Address</b>56 Kearneys Road, Bromley, Christchurch 8062</div></li>
+        <li><i aria-hidden="true"><svg class="ic"><use href="#i-phone"/></svg></i><div><b>Phone</b><a href="tel:0224758937">022 475 8937</a></div></li>
+        <li><i aria-hidden="true"><svg class="ic"><use href="#i-mail"/></svg></i><div><b>Email</b><a href="mailto:admin@coastalspirit.co.nz">admin@coastalspirit.co.nz</a></div></li>
+        <li><i aria-hidden="true"><svg class="ic"><use href="#i-clock"/></svg></i><div><b>Office hours</b>Hours vary, so please call to arrange a visit</div></li>
+      </ul>
+    </div>
+    <form id="contactForm">
+      <h3>Send us a message</h3>
+      <label>Your name<input name="name" autocomplete="name" required></label>
+      <label>Email<input type="email" name="email" autocomplete="email" required></label>
+      <label>Message<textarea name="message" required></textarea></label>
+      <button class="btn btn-primary" type="submit">Send message</button>
+      <p class="form-note">Preview only: this opens your email app addressed to the club office.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <img src="https://images.squarespace-cdn.com/content/v1/5f4816784f1f3808548e6bf4/1598940111657-X4POK1NMAWZWE9IK8X1W/coastal-logo-big-1.png?format=500w" alt="" width="60" height="55" loading="lazy">
+        <p style="max-width:34ch">CSFC, this is your community. A safe and enjoyable place to play, in Christchurch's east.</p>
+      </div>
+      <div>
+        <h4>Play</h4>
+        <ul>
+          <li><a href="https://www.coastalspirit.co.nz/registrations" target="_blank" rel="noopener">Registrations</a></li>
+          <li><a href="https://www.coastalspirit.co.nz/first-kicks" target="_blank" rel="noopener">First Kicks</a></li>
+          <li><a href="https://www.coastalspirit.co.nz/junior-teams" target="_blank" rel="noopener">Junior &amp; Youth</a></li>
+          <li><a href="https://www.coastalspirit.co.nz/senior-men" target="_blank" rel="noopener">Men's</a></li>
+          <li><a href="https://www.coastalspirit.co.nz/womens-football" target="_blank" rel="noopener">Women's</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Club</h4>
+        <ul>
+          <li><a href="https://www.coastalspirit.co.nz/calendar" target="_blank" rel="noopener">Calendar</a></li>
+          <li><a href="https://www.coastalspirit.co.nz/club-policies" target="_blank" rel="noopener">Policies</a></li>
+          <li><a href="https://www.coastalspirit.co.nz/our-venues" target="_blank" rel="noopener">Venues</a></li>
+          <li><a href="https://www.coastalspirit.co.nz/csfc-business-directory-1" target="_blank" rel="noopener">Business directory</a></li>
+          <li><a href="https://www.otakarofc.co.nz" target="_blank" rel="noopener">Ōtākaro FC</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <ul>
+          <li><a href="https://www.facebook.com/CoastalSpirit/" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/coastalspirit.fc/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://twitter.com/CoastalSpiritNZ" target="_blank" rel="noopener">X / Twitter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© Coastal Spirit Football Club. All club content and imagery belong to the club.</span>
+      <span>Concept redesign by <a href="https://www.instagram.com/chretienstudios/" target="_blank" rel="noopener">chrétienstudios</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('menuBtn'),menu=document.getElementById('menu');
+  function set(open){menu.classList.toggle('open',open);btn.setAttribute('aria-expanded',open);btn.setAttribute('aria-label',open?'Close menu':'Open menu')}
+  btn.addEventListener('click',function(){set(!menu.classList.contains('open'))});
+  menu.addEventListener('click',function(e){if(e.target.tagName==='A')set(false)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)});
+  document.getElementById('contactForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var f=e.target.elements,n=f.namedItem('name').value,em=f.namedItem('email').value,m=f.namedItem('message').value;
+    var body=encodeURIComponent(m+'\n\n— '+n+' ('+em+')');
+    window.location.href='mailto:admin@coastalspirit.co.nz?subject='+encodeURIComponent('Website enquiry from '+n)+'&body='+body;
+  });
+})();
+</script>
+</body>
+</html>
